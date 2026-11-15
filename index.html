@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f7f5"><title>LifeHUB · Financeiro familiar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#inicio"><img src="assets/lifehub-logo.png" alt="LifeHUB"></a>
+      <div class="workspace"><span class="workspace-dot"></span><span>Financeiro da família</span><span class="chevron">⌄</span></div>
+      <p class="nav-label">MENU PRINCIPAL</p>
+      <nav class="nav">
+        <button class="nav-item active" data-view="inicio"><span class="nav-icon">⌂</span> Visão geral</button>
+        <button class="nav-item" data-view="lancamentos"><span class="nav-icon">↕</span> Lançamentos</button>
+        <button class="nav-item" data-view="contas"><span class="nav-icon">▣</span> Contas</button>
+        <button class="nav-item" data-view="cartoes"><span class="nav-icon">▤</span> Cartões</button>
+        <button class="nav-item" data-view="planejamento"><span class="nav-icon">◷</span> Planejamento futuro</button>
+        <button class="nav-item" data-view="relatorios"><span class="nav-icon">▥</span> Relatórios</button>
+      </nav>
+      <p class="nav-label space-top">PERSONALIZAÇÃO</p>
+      <nav class="nav"><button class="nav-item" data-view="categorias"><span class="nav-icon">◈</span> Categorias</button></nav>
+      <div class="sidebar-bottom"><div class="family-avatar">家</div><div><strong>Minha família</strong><small>Espaço compartilhado</small></div><span class="more">•••</span></div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><div><div class="eyebrow">SÁBADO, 14 DE NOVEMBRO DE 2026</div><h1 id="page-title">Bom dia! <span>Vamos cuidar do futuro?</span></h1></div><div class="top-actions"><button class="icon-button" title="Notificações">♧</button><button class="avatar">LF</button></div></header>
+      <section id="view-inicio" class="view active">
+        <div class="welcome-row"><div><h2>Resumo financeiro</h2><p>Acompanhe o que está acontecendo com o dinheiro da família.</p></div><button class="button primary" data-action="new-transaction">＋ Novo lançamento</button></div>
+        <div class="metric-grid">
+          <article class="metric-card balance-card"><div class="metric-top"><span>Saldo total em contas</span><span class="metric-symbol">◉</span></div><div class="metric-value" id="total-balance">R$ 0,00</div><div class="metric-foot"><span class="status-pill mint">● Consolidado</span><span>Contas cadastradas</span></div><div class="balance-decoration"></div></article>
+          <article class="metric-card"><div class="metric-top"><span>Receitas do mês</span><span class="metric-symbol mint-bg">↗</span></div><div class="metric-value" id="month-income">R$ 0,00</div><div class="metric-foot"><span class="status-pill mint">Entradas</span><span>Este mês</span></div></article>
+          <article class="metric-card"><div class="metric-top"><span>Despesas do mês</span><span class="metric-symbol peach-bg">↘</span></div><div class="metric-value" id="month-expenses">R$ 0,00</div><div class="metric-foot"><span class="status-pill peach">Saídas</span><span>Este mês</span></div></article>
+          <article class="metric-card"><div class="metric-top"><span>Faturas em aberto</span><span class="metric-symbol lilac-bg">▤</span></div><div class="metric-value" id="open-invoices">R$ 0,00</div><div class="metric-foot"><span class="status-pill lilac">Cartões</span><span>Não pagas</span></div></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel chart-panel"><div class="panel-heading"><div><h3>Fluxo financeiro</h3><p>Receitas e despesas · últimos 6 meses</p></div><span class="soft-tag">Visão mensal</span></div><div class="chart-legend"><span><i class="legend-dot income-dot"></i> Receitas</span><span><i class="legend-dot expense-dot"></i> Despesas</span></div><div id="flow-chart" class="bar-chart"><div class="empty-state">Adicione lançamentos para visualizar seu fluxo financeiro.</div></div></article>
+          <article class="panel"><div class="panel-heading"><div><h3>Contas da família</h3><p>Saldo disponível por conta</p></div><button class="text-button" data-view="contas">Ver todas →</button></div><div id="account-summary" class="stack-list"><div class="empty-state">Nenhuma conta cadastrada.</div></div></article>
+        </div>
+        <div class="dashboard-grid lower-grid"><article class="panel"><div class="panel-heading"><div><h3>Últimos lançamentos</h3><p>Movimentações recentes</p></div><button class="text-button" data-view="lancamentos">Ver todos →</button></div><div id="recent-transactions" class="transaction-list"><div class="empty-state">Seus lançamentos aparecerão aqui.</div></div></article><article class="panel future-card"><div class="panel-heading"><div><h3>Como estaremos?</h3><p>Faça uma consulta rápida no futuro</p></div><span class="future-icon">✦</span></div><label for="quick-date">Quero saber meu saldo em</label><div class="inline-form"><input type="date" id="quick-date"><button class="button primary" id="quick-project">Consultar</button></div><div id="quick-result" class="quick-result">Escolha uma data para ver a projeção.</div></article></div>
+      </section>
+      <section id="view-lancamentos" class="view"><div class="section-heading"><div><h2>Lançamentos</h2><p>Registre e acompanhe cada movimentação da família.</p></div><button class="button primary" data-action="new-transaction">＋ Novo lançamento</button></div><div class="filter-row"><input id="transaction-search" placeholder="Buscar descrição ou estabelecimento..."><select id="filter-type"><option value="">Todos os tipos</option><option value="income">Receitas</option><option value="expense">Despesas</option><option value="transfer">Transferências</option></select><select id="filter-category"><option value="">Todas as categorias</option></select><input type="date" id="filter-from"><input type="date" id="filter-to"></div><div class="panel table-panel"><div id="transactions-table"></div></div></section>
+      <section id="view-contas" class="view"><div class="section-heading"><div><h2>Contas e recursos</h2><p>O dinheiro disponível em cada frente da família.</p></div><button class="button primary" data-action="new-account">＋ Adicionar conta</button></div><div id="accounts-grid" class="entity-grid"></div></section>
+      <section id="view-cartoes" class="view"><div class="section-heading"><div><h2>Cartões de crédito</h2><p>Organize limites, vencimentos e faturas.</p></div><button class="button primary" data-action="new-card">＋ Adicionar cartão</button></div><div id="cards-grid" class="entity-grid"></div></section>
+      <section id="view-planejamento" class="view"><div class="section-heading"><div><h2>Planejamento futuro</h2><p>Descubra quanto teremos e quanto estará comprometido em uma data.</p></div></div><div class="panel projection-panel"><div class="projection-intro"><span class="projection-icon">◷</span><div><h3>Simulador de saldo futuro</h3><p>Considera os lançamentos previstos, contas e faturas cadastradas até a data escolhida.</p></div></div><div class="projection-controls"><div><label for="projection-date">Data da consulta</label><input type="date" id="projection-date"></div><div><label for="projection-account">Escopo</label><select id="projection-account"><option value="all">Todas as contas da família</option></select></div><button class="button primary" id="run-projection">Calcular projeção</button></div><div id="projection-result" class="projection-result"><div class="empty-state">Escolha uma data e clique em calcular.</div></div><p class="disclaimer">A projeção depende dos lançamentos que você cadastrar. Compras no cartão são consideradas na data prevista de pagamento da fatura, não novamente na data da compra.</p></div><div class="panel"><div class="panel-heading"><div><h3>Compromissos futuros</h3><p>Despesas e receitas futuras já registradas</p></div></div><div id="future-list"></div></div></section>
+      <section id="view-relatorios" class="view"><div class="section-heading"><div><h2>Relatórios</h2><p>Explore os números por período, valor, categoria ou pessoa.</p></div><button class="button secondary" id="export-csv">↓ Exportar CSV</button></div><div class="panel report-filters"><div><label>De</label><input type="date" id="report-from"></div><div><label>Até</label><input type="date" id="report-to"></div><div><label>Tipo</label><select id="report-type"><option value="">Todos</option><option value="income">Receitas</option><option value="expense">Despesas</option></select></div><div><label>Categoria</label><select id="report-category"><option value="">Todas</option></select></div><button class="button primary" id="run-report">Gerar relatório</button></div><div class="metric-grid report-metrics"><article class="metric-card"><span class="muted">Total de receitas</span><div class="metric-value" id="report-income">R$ 0,00</div></article><article class="metric-card"><span class="muted">Total de despesas</span><div class="metric-value" id="report-expenses">R$ 0,00</div></article><article class="metric-card"><span class="muted">Resultado do período</span><div class="metric-value" id="report-result">R$ 0,00</div></article></div><div class="dashboard-grid"><article class="panel"><div class="panel-heading"><h3>Despesas por categoria</h3></div><div id="category-report"></div></article><article class="panel"><div class="panel-heading"><h3>Detalhamento</h3></div><div id="report-table"></div></article></div></section>
+      <section id="view-categorias" class="view"><div class="section-heading"><div><h2>Categorias</h2><p>Personalize a maneira como a família organiza seus gastos.</p></div><button class="button primary" data-action="new-category">＋ Nova categoria</button></div><div id="categories-grid" class="entity-grid"></div></section>
+      <footer class="footer"><span>LifeHUB <b>•</b> Gestão financeira familiar</span><span id="connection-status">Modo de configuração</span></footer>
+    </main>
+  </div>
+  <dialog id="modal" class="modal"><form id="modal-form" method="dialog"><div class="modal-heading"><div><span class="eyebrow">LIFEHUB</span><h2 id="modal-title">Novo cadastro</h2></div><button type="button" class="close-button" id="close-modal">×</button></div><div id="modal-fields" class="modal-fields"></div><div class="modal-actions"><button type="button" class="button secondary" id="cancel-modal">Cancelar</button><button type="submit" class="button primary">Salvar</button></div></form></dialog>
+  <script src="app.js"></script>
+</body></html>
